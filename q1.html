@@ -2,12 +2,15 @@
     <head>  
         <script>
            
-            fetch("https://restcountries.com/v3.1/all")
-  .then((response) => response.json())
-  .then((data) => {
-    const asiaCountries = data.filter((country) => country.region === "Asia");
+           var request = new XMLHttpRequest();
+request.open("GET", "https://restcountries.com/v3.1/all", "true");
+request.send();
+request.onload = function() 
+ {
+    var countrydata = JSON.parse(this.response);
+    const asiaCountries = countrydata.filter((country) => country.region === "Asia");
     console.log("Countries in Asia:", asiaCountries);
-  });
+  }
 
         </script>
     </head>
